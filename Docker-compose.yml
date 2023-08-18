@@ -1,0 +1,26 @@
+version: '3.9'
+services:
+  # Add the backend service
+
+  server:
+    image: <docker image>
+    ports:
+      - '3002:3002'
+    networks:
+      - backend
+
+#Add the frontend service
+
+  frontend:
+    image: <docker image>
+    ports:
+      - '80:80'
+    networks:
+      - backend
+    depends_on:
+      - server
+
+networks:
+  backend:
+    driver: bridge
+   
